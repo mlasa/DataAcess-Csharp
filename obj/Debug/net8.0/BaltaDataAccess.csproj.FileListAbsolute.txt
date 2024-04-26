@@ -41,3 +41,5 @@ E:\Pessoal\projetos\BaltaDataAccess\obj\Debug\net8.0\refint\BaltaDataAccess.dll
 E:\Pessoal\projetos\BaltaDataAccess\obj\Debug\net8.0\BaltaDataAccess.pdb
 E:\Pessoal\projetos\BaltaDataAccess\obj\Debug\net8.0\BaltaDataAccess.genruntimeconfig.cache
 E:\Pessoal\projetos\BaltaDataAccess\obj\Debug\net8.0\ref\BaltaDataAccess.dll
+E:\Pessoal\projetos\BaltaDataAccess\bin\Debug\net8.0\Dapper.dll
+E:\Pessoal\projetos\BaltaDataAccess\obj\Debug\net8.0\BaltaDataAccess.sourcelink.json

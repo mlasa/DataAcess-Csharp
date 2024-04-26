@@ -1,5 +1,8 @@
 ﻿using System;
-using System.Data;
+using System.Linq;
+using System.Text.Json;
+using BaltaDataAccess.Models;
+using Dapper;
 using Microsoft.Data.SqlClient;
 
 namespace BaltaDataAccess;
@@ -9,22 +12,21 @@ class Program
     static void Main(string[] args)
     {
         const string connectionString = "Server=localhost,1433;Database=balta;User ID=sa;Password=root@mlasa00";
+        const string sqlQuery = "SELECT [Id], [Title] FROM [Category]";
 
         using (var connection = new SqlConnection(connectionString)){
-            Console.WriteLine("Conexão com banco aberta!");
-            connection.Open();
+            var categories = connection.Query<Category>(sqlQuery);
 
-            using(var command = new SqlCommand()){
-                command.Connection = connection;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT [Id], [Title] FROM [Category]";
+            Console.WriteLine($"\n\n\n {categories.Count()} categorias de cursos no banco de dados");
 
-                var reader = command.ExecuteReader();
-                while(reader.Read()){
-                    Console.WriteLine(reader.GetGuid(0) + " - "+ reader.GetString(1));
-                }
+            foreach (var category in categories){
+                //WriteJson(category);
+                Console.WriteLine(category.Title);
             }
         }
+    }
 
+    static void WriteJson(object obj){
+        Console.WriteLine(JsonSerializer.Serialize(obj));
     }
 }
