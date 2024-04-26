@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "e1BXQAj+SJis/wXpzJUJklrYG7xWoWCpJx73gj+jvyx1g0uP90qUj1DvrPU/E2yNLAWVvYomOEDukfioF9nhaQ==",
+  "dgSpecHash": "RNUI2Xtd0uI24E4YnXdeikyDzWbNuD2FCght7l2TU+BDQxDWMW7T+Sj4u3tLSdgWkTTW4AIScaVPy+9u0Aiazg==",
   "success": true,
   "projectFilePath": "E:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\marce\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
