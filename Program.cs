@@ -33,8 +33,8 @@ class Program
             //DeleteCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"));
             //UpdateCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"), "Minha nova categoria");
             //GetCategories(connection);
-            OneToOne_ByCourse(connection, new Guid("5db94713-7c21-3e20-8d1b-471000000000"));
-            //OneToMany(connection);
+            //OneToOne_ByCourse(connection, new Guid("5db94713-7c21-3e20-8d1b-471000000000"));
+            OneToMany(connection);
 
             connection.Close();
         }
@@ -121,8 +121,12 @@ class Program
             return carreer;
         }, splitOn: "CareerId");
 
-        foreach (var item in items){
-            Console.Clear();
+        foreach (var carreer in carreers){
+            Console.WriteLine($"\n{carreer.Title}");
+
+            foreach(var itemCareer in carreer.Items){
+                Console.WriteLine($"   *{itemCareer.Title}");
+            }
         }
     }
 }
