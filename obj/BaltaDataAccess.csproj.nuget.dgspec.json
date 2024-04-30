@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj": {}
+    "E:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj": {}
   },
   "projects": {
-    "e:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj": {
+    "E:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj",
+        "projectUniqueName": "E:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj",
         "projectName": "BaltaDataAccess",
-        "projectPath": "e:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj",
+        "projectPath": "E:\\Pessoal\\projetos\\BaltaDataAccess\\BaltaDataAccess.csproj",
         "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-        "outputPath": "e:\\Pessoal\\projetos\\BaltaDataAccess\\obj\\",
+        "outputPath": "E:\\Pessoal\\projetos\\BaltaDataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",

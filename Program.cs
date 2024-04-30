@@ -31,7 +31,7 @@ class Program
             //DeleteCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"));
             //UpdateCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"), "Minha nova categoria");
             //GetCategories(connection);
-            OneToOne(connection);
+            OneToOne_ByCourse(connection, new Guid("5db94713-7c21-3e20-8d1b-471000000000"));
 
             connection.Close();
         }
@@ -76,17 +76,21 @@ class Program
         foreach(var category in categories) Console.WriteLine(category.Title);
     }
 
-    static void OneToOne(SqlConnection connection){
+    static void OneToOne_ByCourse(SqlConnection connection, Guid courseId){
         const string sql = @"SELECT * FROM [CareerItem] INNER JOIN [Course]
                         ON [CareerItem].[CourseId] = [Course].[Id]
+                        WHERE [CareerItem].[CourseId] = @CourseId
                         ";
 
         var items = connection.Query<CarreerItem, Course, CarreerItem>(sql,
         (carreerItem, course) => {
             carreerItem.Course = course;
             return carreerItem;
-        },  splitOn: "Id");
+        }, new { CourseId = courseId}, splitOn: "Id");
 
-        foreach (var item in items) Console.WriteLine( item.Title + item.Course.Title);
+        foreach (var item in items){
+            Console.Clear();
+            Console.WriteLine( $"Carreira: {item.Title} \n   - {item.Course.Title}");
+        }
     }
 }
