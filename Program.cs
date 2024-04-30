@@ -34,7 +34,8 @@ class Program
             //UpdateCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"), "Minha nova categoria");
             //GetCategories(connection);
             //OneToOne_ByCourse(connection, new Guid("5db94713-7c21-3e20-8d1b-471000000000"));
-            OneToMany(connection);
+            //OneToMany(connection);
+            QueryMultiple(connection);
 
             connection.Close();
         }
@@ -126,6 +127,28 @@ class Program
 
             foreach(var itemCareer in carreer.Items){
                 Console.WriteLine($"   *{itemCareer.Title}");
+            }
+        }
+    }
+
+    static void QueryMultiple (SqlConnection connection){
+        const string sql = @"
+            SELECT [Title] FROM [Career]; 
+            SELECT [Title] FROM [Course]
+        ";
+
+        using(var multi = connection.QueryMultiple(sql)){
+            var careers = multi.Read<Carreer>();
+            var courses = multi.Read<Course>();
+
+            foreach (var career in careers){
+                Console.WriteLine($"{career.Title}");
+            }
+
+            Console.WriteLine($"------------------------------------");
+
+            foreach (var course in courses){
+                Console.WriteLine($"{course.Title}");
             }
         }
     }
