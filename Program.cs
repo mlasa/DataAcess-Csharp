@@ -23,9 +23,6 @@ class Program
         category.Summary = "AWS Cloud";
         category.Order = 8;
 
-        //Category Id (teste): 55a76f63-2260-4565-bb10-bb1db982681e
-        //Course Id: 5c34a0a9-e717-9a7d-1241-14ac00000000 - xamarin
-
         using (var connection = new SqlConnection(connectionString)){
             connection.Open();
 
@@ -35,7 +32,8 @@ class Program
             //GetCategories(connection);
             //OneToOne_ByCourse(connection, new Guid("5db94713-7c21-3e20-8d1b-471000000000"));
             //OneToMany(connection);
-            QueryMultiple(connection);
+            //QueryMultiple(connection);
+            ExecuteTransaction(connection, category);
 
             connection.Close();
         }
@@ -150,6 +148,29 @@ class Program
             foreach (var course in courses){
                 Console.WriteLine($"{course.Title}");
             }
+        }
+    }
+
+
+    static void ExecuteTransaction(SqlConnection connection, Category newCategory)
+    {
+        const string insertSql = "INSERT INTO [Category] VALUES(@Id, @Title, @Url, @Summary, @Order, @Description, @Featured)";
+
+        using (var transaction = connection.BeginTransaction()){
+            var affected = connection.Execute(insertSql, new
+            {
+                newCategory.Id,
+                newCategory.Title,
+                newCategory.Url,
+                newCategory.Description,
+                newCategory.Summary,
+                newCategory.Order,
+                newCategory.Featured
+            }, transaction);
+
+            //transaction.Commit();
+            transaction.Rollback();
+            Console.WriteLine($"{affected.ToString()} linhas inseridas");
         }
     }
 }
