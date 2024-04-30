@@ -11,14 +11,16 @@ Exemplo:
 * Carreira (Carreer): Frontend.
 * Items de carreira (CarreerItem):
     - {
-        Título: Comece por aqui.
-        Descrição: Base é fundamental para poder evoluir.
-        Curso: HTML e CSS
+        - Título: Comece por aqui.
+        - Descrição: Base é fundamental para poder evoluir.
+        - Curso: HTML e CSS
+          
     },
    - {
-        Título: Dando um passo a mais.
-        Descrição: Torne suas interfaces dinâmicas, e faça requisições de dados
-        Curso: Aprenda JavaScript
+        - Título: Dando um passo a mais.
+        - Descrição: Torne suas interfaces dinâmicas, e faça requisições de dados
+        - Curso: Aprenda JavaScript
+          
     }
 * Categorias: Frontend
 
