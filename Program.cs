@@ -22,6 +22,7 @@ class Program
         category.Order = 8;
 
         //Category Id (teste): 55a76f63-2260-4565-bb10-bb1db982681e
+        //Course Id: 5c34a0a9-e717-9a7d-1241-14ac00000000 - xamarin
 
         using (var connection = new SqlConnection(connectionString)){
             connection.Open();
@@ -29,7 +30,8 @@ class Program
             //RegisterCategory(connection, category);
             //DeleteCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"));
             //UpdateCategory(connection, new Guid("55a76f63-2260-4565-bb10-bb1db982681e"), "Minha nova categoria");
-            GetCategories(connection);
+            //GetCategories(connection);
+            OneToOne(connection);
 
             connection.Close();
         }
@@ -73,8 +75,18 @@ class Program
         Console.WriteLine($"{categories.Count()} categorias encontradas");
         foreach(var category in categories) Console.WriteLine(category.Title);
     }
-    static void WriteJson(object obj)
-    {
-        Console.WriteLine(JsonSerializer.Serialize(obj));
+
+    static void OneToOne(SqlConnection connection){
+        const string sql = @"SELECT * FROM [CareerItem] INNER JOIN [Course]
+                        ON [CareerItem].[CourseId] = [Course].[Id]
+                        ";
+
+        var items = connection.Query<CarreerItem, Course, CarreerItem>(sql,
+        (carreerItem, course) => {
+            carreerItem.Course = course;
+            return carreerItem;
+        },  splitOn: "Id");
+
+        foreach (var item in items) Console.WriteLine( item.Title + item.Course.Title);
     }
 }
